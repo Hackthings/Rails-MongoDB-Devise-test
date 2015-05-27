@@ -28,7 +28,7 @@ class User
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
   # field :confirmation_sent_at, type: Time
-  # field :unconfirmed_email,    type: String # Only if using reconfirmable
+  # field :unconfirmed_email,    type: String # Only if using rgit econfirmable
 
   ## Lockable
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
@@ -39,6 +39,9 @@ class User
   field :admin, :type => Boolean, :default => false
   
   # Basic info
+  field :name, :type => String
+  field :username, :type => String
+  field :nickname, :type => String
   
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.id).first_or_create do |user|
