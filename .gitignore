@@ -13,3 +13,5 @@
 /tmp
 /data
 mongod
+.env
+/coverage
