@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :project
 
   get 'profile/:id' => 'profiles#show'
-  get 'logout' => delete 'devise/sessions#destroy'
+  get 'logout' => 'devise/sessions#destroy'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.

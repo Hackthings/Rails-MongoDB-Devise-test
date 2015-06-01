@@ -1,13 +1,14 @@
 require 'rails_helper'
+require 'pp'
 
-RSpec.describe ProfilesController, type: controller do
+RSpec.describe ProfilesController, :type => :controller do
 
   describe "GET  #index" do
 
     # when not logged in
     it "should redirect to new user page" do
       get :index
-      expect(response).to redirect_to(controller: "user_session", action: "new")
+      expect(response).to redirect_to(new_user_session_path)
     end
 
     # when logged in
@@ -16,18 +17,17 @@ RSpec.describe ProfilesController, type: controller do
       user = FactoryGirl.create(:user)
       sign_in user
       assert_response :success
-      puts @response
-      assert_equal user.id, @response
+      expect{ get :index }.to change{ assigns(:user) }.to(user.id)
     end
 
   end
 
-  describe Show do
+  describe "Show" do
 
-    test "should get show" do
+    it "should get show" do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       user = FactoryGirl.create(:user)
-      get "/profiles/#{user.id}"
+      get :show, :id => user.id
       assert_response :success
     end
 
