@@ -14,21 +14,28 @@ RSpec.describe ProfilesController, :type => :controller do
     # when logged in
     it "should return current user" do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      user = FactoryGirl.create(:user)
-      sign_in user
+      @user = FactoryGirl.create(:user)
+      sign_in @user
       assert_response :success
-      expect{ get :index }.to change{ assigns(:user) }.to(user.id)
+      expect{ get :index }.to change{ assigns(:user) }.to(@user.id)
     end
 
   end
 
   describe "Show" do
 
-    it "should get show" do
+    before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      user = FactoryGirl.create(:user)
-      get :show, :id => user.id
+      @user = FactoryGirl.create(:user)
+    end
+
+    it "should get show" do
+      get :show, :id => @user.id
       assert_response :success
+    end
+
+    it "should show the correct user" do
+      expect{ get :show, :id => @user.id }.to change{ assigns(:user) }.to(@user)
     end
 
   end
