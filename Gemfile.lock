@@ -267,7 +267,7 @@ DEPENDENCIES
   omniauth-facebook
   rails (= 4.2.1)
   rspec-rails
-  sass-rails (~> 5.0)
+  sass-rails (= 5.0.3)
   sdoc (~> 0.4.0)
   slim-rails (~> 3.0.1)
   spring
