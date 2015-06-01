@@ -1,28 +1,33 @@
-.container
-  h2
-    | Sign up
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = devise_error_messages!
-    .field
-      .form-group
-        = f.label :email
-        br
-        = f.email_field :email, autofocus: true, :class => "form-control"
-    .field
-      div
-        = f.label :password
-        - if @validatable
-          em
-            | (
-            = @minimum_password_length
-            |  characters minimum)
-        br
-        = f.password_field :password, autocomplete: "off", :class => "form-control"
-    .field
-      .form-group
-        = f.label :password_confirmation
-        br
-        = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control"
-    .actions
-      = f.submit "Sign up", class: "btn btn-primary"
-  = render "devise/shared/links"
+#padding
+  .container
+    h2
+      | Sign up
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      .field
+        .form-group
+          = f.text_field :name, autofocus: true, :class => "form-control", placeholder: "Full Name"
+      .field
+        .form-group
+          = f.email_field :email, :class => "form-control", placeholder: "Email Address"
+      .field
+        .input-group
+          span.input-group-addon id="basic-addon-1"
+            | @
+          = f.text_field :username, :class => "form-control", :id => "#basic-addon-1", placeholder: "Username"
+      br
+      .field.form-group
+        div
+          - if @validatable
+            em
+              | (
+              = @minimum_password_length
+              |  characters minimum)
+          br
+          = f.password_field :password, autocomplete: "off", :class => "form-control", placeholder: "Password"
+      .field
+        .form-group
+          = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", placeholder: "Confirm Password"
+      .actions
+        = f.submit "Sign up", class: "btn btn-primary"
+    = render "devise/shared/links"
