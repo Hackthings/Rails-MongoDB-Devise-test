@@ -1,6 +1,12 @@
 ![Travis CI](https://travis-ci.org/hackathons-com/Rails-MongoDB-Devise-test.svg?branch=master)
 
+[![Code Climate](https://codeclimate.com/github/hackathons-com/Rails-MongoDB-Devise-test/badges/gpa.svg)](https://codeclimate.com/github/hackathons-com/Rails-MongoDB-Devise-test)
+
+[![Test Coverage](https://codeclimate.com/github/hackathons-com/Rails-MongoDB-Devise-test/badges/coverage.svg)](https://codeclimate.com/github/hackathons-com/Rails-MongoDB-Devise-test/coverage)
+
 # Hackathons.com
+
+## Requires Ruby 2.0 or later.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
