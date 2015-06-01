@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   namespace :blog do
     resources :blobs
   end
-  
+
   resources :profiles
   resources :project
-  
+
   get 'profile/:id' => 'profiles#show'
+  get 'logout' => delete 'devise/sessions#destroy'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
@@ -44,12 +45,12 @@ Rails.application.routes.draw do
   #   end
 
   # Example resource route with more complex sub-resources:
-#      resources :products do
-#        resources :comments
-#        resources :sales do
-#          get 'recent', on: :collection
-#        end
-#      end
+  #      resources :products do
+  #        resources :comments
+  #        resources :sales do
+  #          get 'recent', on: :collection
+  #        end
+  #      end
 
   # Example resource route with concerns:
   #   concern :toggleable do
