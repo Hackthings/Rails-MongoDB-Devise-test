@@ -1,4 +1,4 @@
-nav.navbar.navbar-inverse.navbar-fixed-top
+nav.navbar.navbar-default.navbar-fixed-top
   .container-fluid
     .navbar-header
       button.navbar-toggle.collapsed[type="button" data-toggle="collapse" data-target="#nav"]
@@ -8,11 +8,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top
       = link_to 'Hackathons.com', root_path, :class => "navbar-brand"
     #nav.collapse.navbar-collapse
       ul.nav.navbar-nav
-        li.active
-          a[href="#"]
-            | Link 
-            span.sr-only
-              | (current)
+        li
+          = link_to 'About', about_path
         li
           a[href="#"]
             | Link
@@ -20,9 +17,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         - if user_signed_in?
           li
             = link_to edit_user_registration_path do
-              - current_user.email
+              - current_user.username
           li
-            = link_to 'Sign Out', destroy_user_session_path, method: :delete
+            = link_to 'Sign Out', logout_path, method: :delete
         - else
           li
             = link_to 'Sign In', new_user_session_path
