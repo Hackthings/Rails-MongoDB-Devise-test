@@ -14,11 +14,11 @@ gemfile:
 - Gemfile
 notifications:
   slack:
-    secure: bp+CvRQjBH2B1QTWmlhopi6jDoZ8rCNQWLZTeTnZhjUTPm3GLY3Ymtrea8RusZukNsmNU7AsqY5Y8H/Zt70Mxx91j/m210k2QsEgYpmAgIJfdwaxhSvWpp92+s7+KR92+L2jRokebJmi7pShNEiYv5PHB/rqtNCBduqCA+rfTCI=
+    secure: FJ9dVL2r2m7TiTxBBkJdRmgXwz0b9d+cLh84soLoKBdzIlnL+tOgTDggkOeWtk1Ic9fg0nqoRq9Ns+uXTn5kS86V2f6p3QGCzLUldcQHV/oOxEgvPFYmKIPgSIsO9RsngmY+gbc3aq9i2SHctYtberUhb4FLiGCb4YP8P/GuDnc=
 sudo: true
 cache: bundler
 addons:
   code_climate:
     repo_token: de88cc0f232b32ac8eb152d8d07c2e2f4dcebb07d1c8c3f12729299122af8ac6
 services:
-  - mongodb
+- mongodb
