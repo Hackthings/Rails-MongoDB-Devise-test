@@ -16,35 +16,49 @@ class Blog::BlobsController < ApplicationController
     def create
       @blob = Blog::Blob.new(blob_params)
       
-      if @blob.save
-          redirect_to @blob
-      else
-          render 'new'
+      respond_to do |format|
+        if @blob.save
+            format.html { redirect_to @blob, notice: 'Blog post successfully created.'}
+            format.json { render :show, status: :created, location: @blob }
+        else
+            format.html { render :new }
+            format.json { render json: @blob.errors, status: :unprocessable_entity }
+        end
       end
     end
     
     def update
       @blob = Blog::Blob.find(params[:id])
       
-      if @blob.update(blob_params)
-        redirect_to @blob
-      else
-        render 'edit'
+      respond_to do |format|
+          if @blob.update(blob_params)
+            format.html { redirect_to @blob, notice: 'Blog post successfully updated.' }
+            format.json { render :show, status: :created, location: @blob }
+          else
+            format.html { render :new }
+            format.json { render json: @blob.errors, status: :unprocessable_entity }
+          end
       end
     end
     
     def show
-      @blob = Blog::Blob.find(params[:id])
+        set_blob
     end
     
     def destroy
-      @blob = Blog::Blob.find(params[:id])
       @blob.destroy!
       
-      redirect_to blog_blobs_path
+      respond_to do |format|
+         format.html { redirect_to blog_blog_url, notice: 'Blog post successfully deleted.' }
+         format.json { head :no_content }
+      end
     end
     
     private
+    def set_blob
+        @blob = Blog::Blob.find(params[:id])
+    end
+    
     def blob_params
       params.require(:blob).permit(:title, :body)
     end
