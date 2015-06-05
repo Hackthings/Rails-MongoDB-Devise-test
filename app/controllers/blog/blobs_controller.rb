@@ -35,7 +35,7 @@ class Blog::BlobsController < ApplicationController
             format.html { redirect_to @blob, notice: 'Blog post successfully updated.' }
             format.json { render :show, status: :created, location: @blob }
           else
-            format.html { render :new }
+            format.html { render :edit }
             format.json { render json: @blob.errors, status: :unprocessable_entity }
           end
       end
