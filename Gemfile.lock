@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 26f67146a7b7969a16862facd746e0ca6f338ff4
+  revision: dffa8432436f05c611eb857fc014af44401c6b2a
   specs:
     mongoid (5.0.0)
       activemodel (~> 4.0)
@@ -60,7 +60,7 @@ GEM
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
-    bson (3.0.3)
+    bson (3.0.4)
     bson_ext (1.5.1)
     builder (3.2.2)
     byebug (5.0.0)
@@ -209,7 +209,7 @@ GEM
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
-    slim (3.0.4)
+    slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
     slim-rails (3.0.1)
