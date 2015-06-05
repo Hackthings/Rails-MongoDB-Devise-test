@@ -3,7 +3,7 @@ require 'pp'
 
 RSpec.describe ProfilesController, :type => :controller do
 
-  describe "GET  #index" do
+  describe "GET #index" do
 
     # when not logged in
     it "should redirect to new user page" do
