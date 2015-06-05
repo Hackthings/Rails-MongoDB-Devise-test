@@ -13,7 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'slim-rails', '~> 3.0.1'
 # MongoDB drivers, requires MongoDB shell v2.6.x
 # Using latest; default gem 'mongoid' is for Rails 3
-gem 'mongoid', github: 'mongoid/mongoid'
+gem 'mongoid'
 gem 'bson_ext'
 # Devise for login
 gem 'devise'
