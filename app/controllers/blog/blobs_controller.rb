@@ -1,3 +1,5 @@
+require 'pp'
+
 class Blog::BlobsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :set_blob, only: [:show, :update, :edit]
@@ -51,6 +53,7 @@ class Blog::BlobsController < ApplicationController
   end
 
   def blob_params
-    params.require(:blob).permit(:title, :body)
+    b = params[:blob]
+    b.permit(:title, :body)
   end
 end
