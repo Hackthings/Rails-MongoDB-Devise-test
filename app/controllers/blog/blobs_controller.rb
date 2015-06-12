@@ -1,4 +1,3 @@
-require 'pp'
 
 class Blog::BlobsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
