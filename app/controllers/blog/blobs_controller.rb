@@ -13,28 +13,11 @@ class Blog::BlobsController < ApplicationController
 
   def create
     @blob = Blog::Blob.new(blob_params)
-
-    respond_to do |format|
-      if @blob.save
-        format.html { redirect_to @blob, notice: 'Blog post successfully created.'}
-        format.json { render :show, status: :created, location: @blob }
-      else
-        format.html { render :new }
-        format.json { render json: @blob.errors, status: :unprocessable_entity }
-      end
-    end
+    render_blob_on(@blob.save, :error_template => :new)
   end
 
   def update
-    respond_to do |format|
-      if @blob.update(blob_params)
-        format.html { redirect_to @blob, notice: 'Blog post successfully updated.' }
-        format.json { render :show, status: :created, location: @blob }
-      else
-        format.html { render :edit }
-        format.json { render json: @blob.errors, status: :unprocessable_entity }
-      end
-    end
+    render_blob_on(@blob.save, :error_template => :edit)
   end
 
   def destroy
@@ -54,5 +37,17 @@ class Blog::BlobsController < ApplicationController
   def blob_params
     b = params[:blob]
     b.permit(:title, :body)
+  end
+
+  def render_blob_on(condition, error_template: nil)
+    respond_to do |format|
+      if condition
+        format.html { redirect_to @blob, notice: 'Blog post successfully created.'}
+        format.json { render :show, status: :created, location: @blob }
+      else
+        format.html { render error_template }
+        format.json { render json: @blob.errors, status: :unprocessable_entity }
+      end
+    end
   end
 end
