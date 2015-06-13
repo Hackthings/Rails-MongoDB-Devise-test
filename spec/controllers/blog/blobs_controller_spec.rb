@@ -5,7 +5,7 @@ RSpec.describe Blog::BlobsController, type: :controller do
   describe "GET #index" do
 
     it "should assign all blobs as @blobs" do
-      blob = Blog::Blob.create!
+      Blog::Blob.create(:title => "title", :body => "text").save
       get :index, {}
       expect(assigns(:blobs))
     end
