@@ -1,7 +1,7 @@
 
 class Blog::BlobsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :set_blob, only: [:show, :update, :edit]
+  before_filter :set_blob, only: [:show, :update, :edit, :destroy]
 
   def index
     @blobs = Blog::Blob.all
