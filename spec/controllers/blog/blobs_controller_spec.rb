@@ -45,8 +45,8 @@ RSpec.describe Blog::BlobsController do
       end
 
       it "should pass params to blob" do
-        expect(assigns(:blob).title).to eq("title")
-        expect(assigns(:blob).body).to eq("do what you want with my body")
+        expect(assigns(:blob).title).to eq(@blob[:title])
+        expect(assigns(:blob).body).to eq(@blob[:body])
       end
 
     end
@@ -58,7 +58,7 @@ RSpec.describe Blog::BlobsController do
       end
 
       it "should not be validated" do
-        expect(assigns[:blob]).to_not be_a_valid(Blog::Blob)
+        expect(assigns[:blob]).not_to be_a_valid(Blog::Blob)
       end
 
       it "should rerender new on failed save" do
@@ -84,8 +84,9 @@ RSpec.describe Blog::BlobsController do
         expect(response).to redirect_to(blog_blob_path assigns(:blob))
       end
 
-      xit "should change the content" do
-
+      it "should change the content" do
+        expect(assigns(:blob).title).to eq(@params[:title])
+        expect(assigns(:blob).body).to eq(@params[:body])
       end
 
     end
@@ -96,11 +97,11 @@ RSpec.describe Blog::BlobsController do
         @blob = Blog::Blob.create(:title => "title", :body => "text")
         @blob.save
         @params = { :title => nil, :body  => "new body" }
-        put :update, :id => @blob.id, :blob => { :title => "new title", :body  => "new body" }
+        put :update, :id => @blob.id, :blob => @params
       end
 
-      xit "should render the edit template" do
-        expect(response).to render_template(:edit_blog_blob)
+      it "should render the edit template" do
+        expect(response).to render_template("blog/blobs/edit")
       end
 
     end
@@ -109,12 +110,18 @@ RSpec.describe Blog::BlobsController do
 
   describe "DELETE #destroy" do
 
-    xit "should remove the blob" do
-
+    before(:each) do
+      @blob = Blog::Blob.create(:title => "title", :body => "text")
+      @blob.save
+      delete :destroy, :id => @blob.id
     end
 
-    xit "should redirect to the blobs index page" do
-      expect(response).to redirect_to(:new_blog_blob)
+    it "should remove the blob" do
+      expect(Blog::Blob.where(:id => @blob.id)).not_to exist
+    end
+
+    it "should redirect to the blobs index page" do
+      expect(response).to redirect_to(:blog_blobs)
     end
 
   end
