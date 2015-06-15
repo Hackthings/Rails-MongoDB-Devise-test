@@ -5,5 +5,5 @@ class Blog::Blob
   validates_presence_of :body
 
   field :title, type: String
-  field :body, type: String
+  field :body, type: Text
 end
