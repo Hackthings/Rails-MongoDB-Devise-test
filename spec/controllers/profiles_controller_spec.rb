@@ -1,23 +1,36 @@
 require 'rails_helper'
-require 'pp'
 
 RSpec.describe ProfilesController, :type => :controller do
 
   describe "GET #index" do
 
-    # when not logged in
-    it "should redirect to new user page" do
-      get :index
-      expect(response).to redirect_to(new_user_session_path)
+    describe "when not logged in" do
+
+      it "should redirect to new user page" do
+        sign_out :user
+        get :index
+        expect(response).to redirect_to(new_user_session_path)
+      end
+
     end
 
-    # when logged in
-    it "should return current user" do
-      @request.env["devise.mapping"] = Devise.mappings[:user]
-      @user = FactoryGirl.create(:user)
-      sign_in @user
-      assert_response :success
-      expect{ get :index }.to change{ assigns(:user) }.to(@user.id)
+    describe "when logged in" do
+
+      before(:each) do
+        @request.env["devise.mapping"] = Devise.mappings[:user]
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+        get :index
+      end
+
+      it "should succeed" do
+        assert_response :success
+      end
+
+      it "should return current user" do
+        expect(assigns(:user)).to eq(@user)
+      end
+
     end
 
   end
@@ -27,15 +40,15 @@ RSpec.describe ProfilesController, :type => :controller do
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @user = FactoryGirl.create(:user)
+      get :show, :id => @user.id
     end
 
-    it "should get show" do
-      get :show, :id => @user.id
+    it "should succeed" do
       assert_response :success
     end
 
     it "should show the correct user" do
-      expect{ get :show, :id => @user.id }.to change{ assigns(:user) }.to(@user)
+      expect(assigns(:user)).to eq(@user)
     end
 
   end

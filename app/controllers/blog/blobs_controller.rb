@@ -39,7 +39,7 @@ class Blog::BlobsController < ApplicationController
   end
 
   def blob_params
-    b = params[:blob]
+    b = params[:blob] || params[:blog_blob]
     b.permit(:title, :body) if b
   end
 
