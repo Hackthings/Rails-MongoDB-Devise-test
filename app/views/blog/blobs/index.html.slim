@@ -1,1 +1,13 @@
-
+.container[id="padding"]
+    h1
+     | Hackathons.com Blog
+    hr
+    - if @blobs.present?
+        - @blobs.each do |blob|
+        h1
+            = blob.title
+        p
+            = markdown blob.body
+    - else
+        h3
+            | Nothing is posted here. Check back for updates!
