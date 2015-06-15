@@ -13,18 +13,22 @@ class Blog::BlobsController < ApplicationController
 
   def create
     @blob = Blog::Blob.new(blob_params)
-    render_blob_on(@blob.save, :error_template => :new)
+    redirect_to_blob_on(@blob.save,
+                        :error_template => :new,
+                        :notice => 'Blog post successfully created.')
   end
 
   def update
-    render_blob_on(@blob.save, :error_template => :edit)
+    redirect_to_blob_on(@blob.update(blob_params),
+                        :error_template => :edit,
+                        :notice => 'Blog post saved.')
   end
 
   def destroy
     @blob.destroy!
 
     respond_to do |format|
-      format.html { redirect_to blog_blog_url, notice: 'Blog post successfully deleted.' }
+      format.html { redirect_to blog_blobs_url, notice: 'Blog post successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -36,13 +40,13 @@ class Blog::BlobsController < ApplicationController
 
   def blob_params
     b = params[:blob]
-    b.permit(:title, :body)
+    b.permit(:title, :body) if b
   end
 
-  def render_blob_on(condition, error_template: nil)
+  def redirect_to_blob_on(condition, error_template: nil, notice: '')
     respond_to do |format|
       if condition
-        format.html { redirect_to @blob, notice: 'Blog post successfully created.'}
+        format.html { redirect_to @blob, notice: notice }
         format.json { render :show, status: :created, location: @blob }
       else
         format.html { render error_template }
