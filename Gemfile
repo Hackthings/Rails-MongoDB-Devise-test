@@ -50,7 +50,7 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'dotenv-rails', require: nil
 
 # Markdown Support
-gem 'kramdown'
+gem 'redcarpet'
 gem 'rouge'
 
 group :development, :test do
