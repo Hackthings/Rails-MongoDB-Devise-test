@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :profiles
   resources :project
+  resources :event
 
   get 'profile/:id' => 'profiles#show'
   devise_scope :user do
