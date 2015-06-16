@@ -9,12 +9,13 @@ rvm:
 before_install:
 - gem update --system
 - gem --version
-bundle_args: "--without unix"
 gemfile:
 - Gemfile
 notifications:
   slack:
-    secure: FJ9dVL2r2m7TiTxBBkJdRmgXwz0b9d+cLh84soLoKBdzIlnL+tOgTDggkOeWtk1Ic9fg0nqoRq9Ns+uXTn5kS86V2f6p3QGCzLUldcQHV/oOxEgvPFYmKIPgSIsO9RsngmY+gbc3aq9i2SHctYtberUhb4FLiGCb4YP8P/GuDnc=
+    rooms:
+      - day-one:ahrDZtNFpXqQiAzoM1fOmtbY#hackathons-dev
+      - hackathonhackers:OPko6kxn8w4FZog32c8LWS4V#dev
 sudo: true
 cache: bundler
 addons:
