@@ -49,6 +49,9 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 
 gem 'dotenv-rails', require: nil
 
+# SMTP support for sending emails within the client app
+gem 'mandrill-api', require: 'mandrill'
+
 # Markdown Support
 gem 'redcarpet'
 gem 'rouge'

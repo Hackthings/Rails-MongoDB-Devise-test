@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -42,4 +42,7 @@ Rails.application.configure do
   # Whitelist BetterErrors IP address. Run TRUSTED_IP=YOUR_IP_ADDRESS_HERE rails s
   # if you are running a remote VM via external service or server.
   BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
+  
+  # Configure ActionMailer to send emails within development environment.
+  config.action_mailer.default_url_options = { :host => 'http://rails-mongodb-devise-test-rodrigoargumedo.c9.io' }
 end
