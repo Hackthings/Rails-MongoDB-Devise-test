@@ -32,5 +32,7 @@ module HackathonsCom
     config.generators do |g|
       g.template_engine :slim
     end
+    
+    config.beginning_of_week = :sunday
   end
 end
