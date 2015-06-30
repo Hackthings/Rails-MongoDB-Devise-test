@@ -17,6 +17,9 @@ notifications:
       - day-one:ahrDZtNFpXqQiAzoM1fOmtbY#hackathons-dev
       - hackathonhackers:OPko6kxn8w4FZog32c8LWS4V#dev
 sudo: true
+script:
+- rake db:create rake db:migrate
+- rake
 cache: bundler
 addons:
   code_climate:
