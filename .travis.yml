@@ -18,8 +18,8 @@ notifications:
       - hackathonhackers:OPko6kxn8w4FZog32c8LWS4V#dev
 sudo: true
 script:
-- rake db:create rake db:migrate
-- rake
+- bundle exec rake db:create rake db:migrate
+- bundle exec rake
 cache: bundler
 addons:
   code_climate:
