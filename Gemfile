@@ -10,6 +10,9 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 
+# Postgres for ActiveRecord
+gem 'pg'
+
 gem 'slim-rails', '~> 3.0.1'
 # MongoDB drivers, requires MongoDB shell v2.6.x
 # Using latest; default gem 'mongoid' is for Rails 3

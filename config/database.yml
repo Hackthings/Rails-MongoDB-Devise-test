@@ -2,10 +2,11 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  template: template0
   
 development:
   <<: *default
-  databasa: HackathonsCom_development
+  database: HackathonsCom_development
   
 test:
   <<: *default
