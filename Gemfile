@@ -13,6 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Postgres for ActiveRecord
 gem 'pg'
 
+# Slim Rendering templates
 gem 'slim-rails', '~> 3.0.1'
 # MongoDB drivers, requires MongoDB shell v2.6.x
 # Using latest; default gem 'mongoid' is for Rails 3
@@ -35,14 +36,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -58,6 +53,10 @@ gem 'mandrill-api', require: 'mandrill'
 # Markdown Support
 gem 'redcarpet'
 gem 'rouge'
+
+gem 'paperclip'
+# gem 'passenger'
+# gem 'capistrano-passenger'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
