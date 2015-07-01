@@ -55,6 +55,7 @@ gem 'redcarpet'
 gem 'rouge'
 
 gem 'paperclip'
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
 # gem 'passenger'
 # gem 'capistrano-passenger'
 
