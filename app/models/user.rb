@@ -44,5 +44,8 @@ class User
   field :username, :type => String
   field :nickname, :type => String
   
+  # You need ImageMagick (Homebrew on OS X 
+  # or apt-get on Ubuntu) to use these features.
   has_mongoid_attached_file :profile_picture
+  validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/.*\Z/
 end
