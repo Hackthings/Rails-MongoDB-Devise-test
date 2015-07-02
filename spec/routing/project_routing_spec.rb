@@ -11,21 +11,21 @@ RSpec.describe ProjectController, type: :routing do
         end
         
         it "routes to #show" do
-            expect(:get => "/project/551cf0fac726f691e73000000").to route_to("project#show", :id => "551cf0fac726f691e73000000")
+            expect(:get => "/project/1").to route_to("project#show", :id => "1")
         end
         
         it "routes to #edit" do
-            expect(:get => "/project/551cf0fac726f691e73000000/edit").to route_to("project#edit", :id => "551cf0fac726f691e73000000")
+            expect(:get => "/project/1/edit").to route_to("project#edit", :id => "1")
         end
         it "routes to #create" do
             expect(:post => "/project").to route_to("project#create")
         end
         
         it "routes to #update" do
-            expect(:put => "/project/551cf0fac726f691e73000000").to route_to("project#update", :id => "551cf0fac726f691e73000000")
+            expect(:put => "/project/1").to route_to("project#update", :id => "1")
         end
         it "routes to #destroy" do
-            expect(:delete => "/project/551cf0fac726f691e73000000").to route_to("project#destroy", :id => "551cf0fac726f691e73000000")
+            expect(:delete => "/project/1").to route_to("project#destroy", :id => "1")
         end
     end
 end
