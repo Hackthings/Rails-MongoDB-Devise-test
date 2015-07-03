@@ -21,7 +21,7 @@ sudo: true
 script:
 - bundle exec rake db:create db:migrate
 - bundle exec rake
-- bundle clean
+- store build cache
 cache: 
 - bundler
 addons:
