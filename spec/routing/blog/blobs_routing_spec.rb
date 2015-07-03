@@ -22,6 +22,10 @@ RSpec.describe Blog::BlobsController, type: :routing do
             expect(:get => '/blog/blobs/1/edit').to route_to('blog/blobs#edit', :id => '1')
         end
         
+        it 'should route to #update' do
+            expect(:put => '/blog/blobs/1').to route_to('blog/blobs#update', :id => '1')
+        end
+        
         it 'should route to #destroy' do
             expect(:delete => '/blog/blobs/1').to route_to('blog/blobs#destroy', :id => '1')
         end

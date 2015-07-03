@@ -11,7 +11,4 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ApplicationHelper, type: :helper do
-  describe 'helpers' do
-    xit 'should render Markdown(content)'
-  end
 end
