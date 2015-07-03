@@ -18,7 +18,7 @@ notifications:
 sudo: true
 script:
 - bundle exec rake db:create db:migrate
-- bundle exex rake
+- bundle exec rake
 addons:
   code_climate:
     repo_token: de88cc0f232b32ac8eb152d8d07c2e2f4dcebb07d1c8c3f12729299122af8ac6
