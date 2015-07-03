@@ -1,10 +1,10 @@
 language: ruby
+cache:
+- bundler
 rvm:
 - 2.0.0
 - 2.1.0
-- 2.1.4
-- 2.1.5
-- 2.2.2
+- 2.2.0
 - ruby-head
 before_install:
 - gem update --system
@@ -20,11 +20,6 @@ notifications:
 sudo: true
 script:
 - bundle exec rake db:create db:migrate
-- bundle exec rake
-- store build cache
-cache: 
-- bundler
-addons:
   code_climate:
     repo_token: de88cc0f232b32ac8eb152d8d07c2e2f4dcebb07d1c8c3f12729299122af8ac6
 services:
